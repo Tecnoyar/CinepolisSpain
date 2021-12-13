@@ -1,0 +1,75 @@
+{
+  "name": "CinepolisSpain",
+  "description": "this process works with excel and FTP",
+  "main": "CinepolisSpain.xaml",
+  "dependencies": {
+    "DatatableToHtmlTableString": "[1.0.1]",
+    "UiPath.Excel.Activities": "[2.11.4]",
+    "UiPath.FTP.Activities": "[1.0.6479.13206]",
+    "UiPath.Mail.Activities": "[1.10.2-preview]",
+    "UiPath.System.Activities": "[21.2.1-preview]",
+    "UiPath.UIAutomation.Activities": "[21.10.4]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "21.2.0.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "7b38eb6a-eaa4-4653-90df-d80e74f323c9",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "CinepolisArgentinaProcess.xaml",
+      "uniqueId": "0a4d8e7c-ef25-4645-9dac-cbe7cc402721",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "CinepolisArgentina.xaml",
+      "uniqueId": "9bbc337b-f27e-4de6-8f4e-fcbc4dcca246",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "CinepolisGulf.xaml",
+      "uniqueId": "7d489135-ddd2-43cb-a874-2efd38efd9a2",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Legacy"
+}
