@@ -1,7 +1,7 @@
 {
   "name": "CinepolisSpain",
   "description": "this process works with excel and FTP",
-  "main": "CinepolisSpain.xaml",
+  "main": "CinepolisSpainProcess.xaml",
   "dependencies": {
     "DatatableToHtmlTableString": "[1.0.1]",
     "UiPath.Excel.Activities": "[2.11.4]",

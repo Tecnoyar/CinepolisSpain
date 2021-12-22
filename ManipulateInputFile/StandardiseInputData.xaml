@@ -8,11 +8,13 @@
     <x:Property Name="in_BlackListDT" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_DirectrioFileName" Type="InArgument(x:String)" />
     <x:Property Name="out_InputDataExist" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="out_BDTradFileName" Type="OutArgument(x:String)" />
+    <x:Property Name="out_BDVIPFileName" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>715,2220</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>715,2381</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>StandardiseInputData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -83,7 +85,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="StandardiseInputData" sap:VirtualizedContainerService.HintSize="725,2155" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence DisplayName="StandardiseInputData" sap:VirtualizedContainerService.HintSize="725,2316" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="directrioDT" />
       <Variable x:TypeArguments="sd:DataTable" Name="BDTradDT" />
@@ -118,7 +120,7 @@
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
-    <If Condition="[out_InputDataTable.Rows.Count&gt;1]" sap:VirtualizedContainerService.HintSize="683,1763" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[out_InputDataTable.Rows.Count&gt;1]" sap:VirtualizedContainerService.HintSize="683,1924" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -126,7 +128,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,1605" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence sap:VirtualizedContainerService.HintSize="376,1766" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -356,7 +358,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ReadRange>
-          <ui:FilterDataTable DataTable="[out_InputDataTable]" DisplayName="Filter Data Table-TRADDB" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_5" OutputDataTable="[BDTradDT]" SelectColumnsMode="Keep">
+          <ui:FilterDataTable DataTable="[out_InputDataTable]" DisplayName="Filter Data Table-TRADDB" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="FilterDataTable_5" OutputDataTable="[BDTradDT]" SelectColumnsMode="Keep">
             <ui:FilterDataTable.Filters>
               <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                 <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -376,12 +378,34 @@
             </ui:FilterDataTable.SelectColumns>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:FilterDataTable>
-          <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[BDTradDT]" Delimitator="Comma" DisplayName="Write CSV BDTrad" FilePath="[&quot;Data\Temp\&quot;+&quot;BD_España_Tradicional_Semana.csv&quot;]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1">
+          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:MultipleAssign.AssignOperations>
+              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[out_BDTradFileName]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">["BD_España_Tradicional_Semana"+DateTime.Today.ToString("dd.mm.yyyy")+".csv"]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[out_BDVIPFileName]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">["BD_España_Luxury_Semana"+DateTime.Today.ToString("dd.mm.yyyy")+".csv"]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+              </scg:List>
+            </ui:MultipleAssign.AssignOperations>
+          </ui:MultipleAssign>
+          <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[BDTradDT]" Delimitator="Comma" DisplayName="Write CSV BDTrad" FilePath="[&quot;Data\Temp\&quot;+out_BDTradFileName]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -414,7 +438,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:FilterDataTable>
-          <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[BDVIPDT]" Delimitator="Comma" DisplayName="Write CSV BDTrad" FilePath="[&quot;Data\Temp\&quot;+&quot;BD_España_Luxury_Semana&quot;+&quot;.csv&quot;]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="WriteCsvFile_2">
+          <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[BDVIPDT]" Delimitator="Comma" DisplayName="Write CSV BDTrad" FilePath="[&quot;Data\Temp\&quot;+out_BDVIPFileName]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="WriteCsvFile_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -424,12 +448,8 @@
           </ui:WriteCsvFile>
           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ClearExcelData workflow" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\ClearExcelData.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="inFileName">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;Data\Input\&quot;+in_InputFileName" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InputSheetName" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="inFileName">["Data\Input\"+in_InputFileName]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[in_InputSheetName]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
