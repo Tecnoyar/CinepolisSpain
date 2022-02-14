@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>712,1908</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>808,1908</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FTPConnect_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -82,6 +82,7 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="FTP File Transfer" sap:VirtualizedContainerService.HintSize="494,1843" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -174,7 +175,7 @@
             </sap:WorkflowViewStateService.ViewState>
             <ui:RemoveFile Host="{x:Null}" KeyFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" Username="{x:Null}" DisplayName="Remove previous inputfile" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="RemoveFile_1" RemotePath="[in_Config(&quot;InputnonPartnerFilePath&quot;).ToString+&quot;/&quot;+in_InputFileName]" SecureFTP="False" />
             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;uploading input file&quot;]" />
-            <ui:Upload Host="{x:Null}" KeyFiles="{x:Null}" NotUploadedFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" UploadedFiles="{x:Null}" Username="{x:Null}" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="Upload_1" LocalPath="[&quot;C:\Users\&quot;+Environment.UserName+&quot;\Desktop\&quot;+Path.GetFileNameWithoutExtension(in_InputFileName)+&quot;.xlsx&quot;]" RemotePath="[in_Config(&quot;InputnonPartnerFilePath&quot;).ToString]" SecureFTP="True" />
+            <ui:Upload Host="{x:Null}" KeyFiles="{x:Null}" NotUploadedFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" UploadedFiles="{x:Null}" Username="{x:Null}" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="Upload_1" LocalPath="[&quot;Data\Input\&quot;+in_InputFileName]" RemotePath="[in_Config(&quot;InputnonPartnerFilePath&quot;).ToString]" SecureFTP="True" />
             <Sequence DisplayName="Upload BD files Sequence" sap:VirtualizedContainerService.HintSize="334,416" sap2010:WorkflowViewState.IdRef="Sequence_6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
