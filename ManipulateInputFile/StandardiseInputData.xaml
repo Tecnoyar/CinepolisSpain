@@ -113,7 +113,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[InputDataTable]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[&quot;Data\Input\&quot;+in_InputFileName]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1">
+          <ui:ReadCsvFile DataTable="[InputDataTable]" Delimitator="Comma" DisplayName="Read CSV" Encoding="iso-8859-15" FilePath="[&quot;Data\Input\&quot;+in_InputFileName]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
