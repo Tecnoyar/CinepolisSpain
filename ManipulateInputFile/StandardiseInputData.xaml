@@ -835,7 +835,7 @@ Select ds =dr.ItemArray
                             <OutArgument x:TypeArguments="x:Object">[CurrentRow("dulceria")]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Object">[if((CurrentRow("dulceria").ToString.Trim=""),"NULL",CurrentRow("dulceria"))]</InArgument>
+                            <InArgument x:TypeArguments="x:Object">["NULL"]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
